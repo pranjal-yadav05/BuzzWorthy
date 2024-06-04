@@ -1,3 +1,10 @@
+/* Ensure the content does not overflow the body */
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* Prevent body scrolling */
+}
+
 body {
   margin: 0;
   background-color: grey;
@@ -6,11 +13,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('../public/community.jpg');
+  background-size: cover;
 }
-html,body{
-  height: 100%;
-  width: 100%;
-}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

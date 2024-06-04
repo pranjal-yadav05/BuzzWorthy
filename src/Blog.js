@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Paper, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 import blogs from './blogs';
+import './Blog.css'
 
 function Blog({ profile }) {
   const filteredBlogs = blogs.filter((blog) => blog.author === profile.Name);
@@ -20,7 +21,7 @@ function Blog({ profile }) {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             style={{ marginBottom: '20px' }}
           >
-            <Paper elevation={3} style={{ padding: '20px' }}>
+            <Paper className='blogpost' elevation={3} style={{ padding: '20px'}}>
               <Typography variant="h5" gutterBottom>
                 {blog.title}
               </Typography>

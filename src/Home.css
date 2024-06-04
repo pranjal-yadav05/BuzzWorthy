@@ -1,63 +1,99 @@
+/* Home.css */
+
+/* Ensure content container is scrollable */
+.content-container {
+  margin-top: 60px; /* Adjust margin to account for fixed navbar height */
+  padding: 20px;
+  overflow-y: auto;
+  height: calc(100vh - 60px); /* Full height minus navbar height */
+}
+
+/* Scrollbar styles */
+.content-container::-webkit-scrollbar {
+  width: 8px; /* Thin scrollbar */
+}
+
+.content-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.content-container::-webkit-scrollbar-thumb {
+  background-color: #A437DB; /* Purple color */
+  border-radius: 10px;
+  border: 2px solid #f1f1f1; /* Create padding around thumb */
+}
+
+/* Home container styles */
 .home-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .post-container {
-    margin-bottom: 20px;
-    width: 100%;
-  }
-  
-  .post {
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 10px 20px;
-  }
-  
-  .post-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .post-content {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 10px;
-  }
-  
-  .post-footer {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    font-size: 14px;
-    color: #666666;
-  }
-  
-  .post-info {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-  }
-  
-  .profile-image {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    margin-left: 10px;
-    margin-right: 5px;
-  }
-  
-  .post-date {
-    margin-top: 5px; /* Add margin to separate from author */
-  }
-  
-  .no-posts {
-    font-size: 16px;
-    color: #666666;
-    text-align: center;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Post container styles */
+.post-container {
+  margin-bottom: 20px;
+  width: 80%; /* Set a width that fits within the viewport */
+}
+
+/* Post styles */
+.post {
+  background-color: rgba(163, 55, 219, 0.95); /* Slightly transparent background */
+  color: #333; /* Font color */
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center; /* Center content */
+}
+
+/* Post title styles */
+.post-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Post content styles */
+.post-content {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  white-space: pre-line; /* Preserve newlines and spaces */
+}
+
+/* Post footer styles */
+.post-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 14px;
+  color: #35185A; /* Font color */
+  justify-content: center; /* Center footer content */
+}
+
+/* Post info styles */
+.post-info {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+/* Profile image styles */
+.profile-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+/* Post date styles */
+.post-date {
+  margin-top: 5px; /* Add margin to separate from author */
+}
+
+/* No posts message styles */
+.no-posts {
+  font-size: 16px;
+  color: #666666;
+  text-align: center;
+}

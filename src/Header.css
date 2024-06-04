@@ -1,0 +1,33 @@
+/* Header.css */
+.navbar {
+    background-color: #A437DB; /* Background color */
+    color: #35185A; /* Font color */
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;  
+  }
+  
+  .navbar-brand {
+    color: #35185A; /* Font color */
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .form-control {
+    background-color: #fff; /* Input background color */
+    color: #35185A; /* Input font color */
+  }
+  
+  .btn-outline-success {
+    color: #35185A; /* Button font color */
+    border-color: #35185A; /* Button border color */
+  }
+  
+  .btn-outline-success:hover {
+    background-color: #35185A; /* Button hover background color */
+    color: #fff; /* Button hover font color */
+  }
+  

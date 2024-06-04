@@ -4,34 +4,47 @@ import axios from 'axios';
 const BASE_URL = 'http://localhost:5000/api';
 
 export const getAllBlogs = async () => {
-  const response = await axios(`${BASE_URL}/blogs`);
-  if (response.status != 200) {
-    console.log(response)
-    throw new Error('Failed to fetch blogs');
+  try {
+    const response = await axios.get(`${BASE_URL}/blogs`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching blogs:', error);
+    throw error;
   }
-  console.log(response)
-  return response;
-
 };
 
 export const getBlogById = async (id) => {
-  const response = await axios(`${BASE_URL}/blogs/${id}`);
-  if (response.status != 200) {
-    throw new Error('Failed to fetch blog');
+  try {
+    const response = await axios.get(`${BASE_URL}/blogs/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching blog by ID:', error);
+    throw error;
   }
-  return response;
 };
 
 export const addBlog = async (blogData) => {
-  const response = await fetch(`${BASE_URL}/blogs`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(blogData),
-  });
-  if (!response.ok) {
-    throw new Error('Failed to add blog');
+  try {
+    const response = await axios.post(`${BASE_URL}/blogs`, blogData, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error adding blog:', error);
+    throw error;
   }
-  return response.json();
+};
+
+export const addLike = async (postId, userId) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/likes`, { postId, userId });
+    console.log(response.data)
+
+    return response.data;
+  } catch (error) {
+    console.error('Error adding like:', error);
+    throw error;
+  }
 };
