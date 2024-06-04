@@ -1,7 +1,7 @@
 // apiService.js
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:5000/api';
+const BASE_URL = 'https://buzzworthyserver.onrender.com/api';
 
 export const getAllBlogs = async () => {
   try {
