@@ -6,6 +6,8 @@ import './Home.css'; // Import CSS file for styling
 const Home = ({ searchQuery }) => {
   const [blogs, setBlogs] = useState([]);
   const [filteredBlogs, setFilteredBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const userId = '60b8d6c72e35f2b6c4d0e6c5'; 
 
   useEffect(() => {
@@ -15,6 +17,8 @@ const Home = ({ searchQuery }) => {
         setBlogs(response);
       } catch (error) {
         console.error('Error fetching blogs:', error);
+      }finally {
+        setLoading(false); // Set loading to false once the fetch is complete
       }
     };
 
@@ -49,47 +53,50 @@ const Home = ({ searchQuery }) => {
 
   return (
     <div className="content-container">
-    <div className="home-container">
-      {/* Render filtered blog posts */}
-      {filteredBlogs.length > 0 ? (
-        filteredBlogs.map((blog, index) => (
-          <motion.div
-            key={blog._id}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="post-container"
-          >
-            <div className="post">
-              <h2 className="post-title">{blog.title}</h2>
-              <div className="post-content">{blog.content.split('\n').map((line, i) => <p key={i}>{line}</p>)}</div>
-              <div className="post-footer">
-                <span className="post-info">
-                <img
+      <div className="home-container">
+        {loading ? ( // Show loading screen if data is being fetched
+          <img style={{ margin:'0', borderRadius:'20px' ,position:'absolute',top:'50%',left:'45%',transform:'translate(-50%, -50%);', width:'100px'}} src='loading.gif'/>
+        
+        ) : filteredBlogs.length > 0 ? (
+          filteredBlogs.map((blog, index) => (
+            <motion.div
+              key={blog._id}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="post-container"
+            >
+              <div className="post">
+                <h2 className="post-title">{blog.title}</h2>
+                <div className="post-content">
+                  {blog.content.split('\n').map((line, i) => <p key={i}>{line}</p>)}
+                </div>
+                <div className="post-footer">
+                  <span className="post-info">
+                    <img
                       src={blog.author.profileImage}
                       alt={blog.author.name}
                       className="profile-image"
                     /> {/* Profile image */}
-                  By {blog.author.name}
-                </span>
-                <span className="post-date">Date: {new Date(blog.date).toLocaleDateString('en-GB')}</span>
-               
-                
+                    By {blog.author.name}
+                  </span>
+                  <span className="post-date">Date: {new Date(blog.date).toLocaleDateString('en-GB')}</span>
+                </div>
+                <img
+                  src='positive-vote.png'
+                  width={'20px'}
+                  style={{ marginRight: '5px', cursor: 'pointer' }}
+                  onClick={() => handleLike(blog._id)}
+                  alt="like button"
+                />
+                <span className="likes-count">{blog.likes}</span>
               </div>
-              <img
-                src='positive-vote.png'
-                width={'20px'}
-                style={{marginRight:'5px'}}
-                onClick={() => handleLike(blog._id)}
-              />
-                  <span className="likes-count">{blog.likes}</span>
-            </div>
-          </motion.div>
-        ))
-      ) : (
-        <p className="no-posts">No blog posts available.</p>
-      )}
-    </div>
+            </motion.div>
+          ))
+        ) : (
+          <p className="no-posts">No blog posts available.</p>
+        )}
+      </div>
     </div>
   );
 };
