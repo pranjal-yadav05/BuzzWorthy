@@ -16,18 +16,6 @@ import ProtectedRoute from './ProtectedRoute';
 function App() {
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [filteredProfiles, setFilteredProfiles] = useState(profiles);
-
-  const handleSearchChange = (e) => {
-    const query = e.target.value.toLowerCase();
-    setSearchQuery(query);
-
-    // Filtering profiles based on the search query
-    const filtered = profiles.filter((profile) =>
-      profile.Name.toLowerCase().includes(query)
-    );
-    setFilteredProfiles(filtered);
-  };
 
   return (
       <Router>
@@ -37,7 +25,6 @@ function App() {
 
           <Routes>
             <Route exact path="/" element={<Home blogs={blogs} searchQuery={searchQuery} />} />
-            <Route path="/blog/:id" element={<BlogWrapper profiles={profiles} />} />
             <Route path="/signin" element={<SignIn/>} />
             <Route path="/signup" element={<SignUp/>} />
             <Route
