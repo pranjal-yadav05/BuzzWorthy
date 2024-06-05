@@ -14,12 +14,6 @@ import UserProfilePage from './UserProfilePage';
 import ProtectedRoute from './ProtectedRoute';
 
 function App() {
-  const profiles = [
-    { id: 1, Name: "Pranjal", Gender: "Male" },
-    { id: 2, Name: "Megh", Gender: "Male" },
-    { id: 3, Name: "Shaily", Gender: "Female" },
-    { id: 4, Name: "Smit", Gender: "Male" },
-  ];
 
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredProfiles, setFilteredProfiles] = useState(profiles);

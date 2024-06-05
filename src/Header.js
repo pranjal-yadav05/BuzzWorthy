@@ -50,37 +50,6 @@ function Header({ onSearchChange }) {
                 <Link style={{color:'white'}}  to="/signin" className="nav-link">Sign In</Link>
               )}
             </li>
-            {/* <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                style={{color:'white'}}
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Menu
-              </a>
-              <ul className="dropdown-menu">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </li>
-              </ul>
-            </li> */}
           </ul>
           <div className="d-flex" role="search">
             <input

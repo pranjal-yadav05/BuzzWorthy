@@ -1,11 +1,11 @@
 // apiService.js
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:5000/api';
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export const getAllBlogs = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}/blogs`);
+    const response = await axios.get(`${BASE_URL}/api/blogs`);
     return response.data;
   } catch (error) {
     console.error('Error fetching blogs:', error);
@@ -15,7 +15,7 @@ export const getAllBlogs = async () => {
 
 export const getBlogById = async (id) => {
   try {
-    const response = await axios.get(`${BASE_URL}/blogs/${id}`);
+    const response = await axios.get(`${BASE_URL}/api/blogs/${id}`);
     return response.data;
   } catch (error) {
     console.error('Error fetching blog by ID:', error);
@@ -25,7 +25,7 @@ export const getBlogById = async (id) => {
 
 export const addBlog = async (blogData) => {
   try {
-    const response = await axios.post(`${BASE_URL}/blogs`, blogData, {
+    const response = await axios.post(`${BASE_URL}/api/blogs`, blogData, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -40,7 +40,7 @@ export const addBlog = async (blogData) => {
 export const addLike = async (blogId, userId) => {
   try {
     const postId = blogId;
-    const response = await axios.post(`${BASE_URL}/likes`, { postId, userId });
+    const response = await axios.post(`${BASE_URL}/api/likes`, { postId, userId });
     console.log(response.data)
 
     return response.data;
@@ -52,7 +52,7 @@ export const addLike = async (blogId, userId) => {
 
 export const addComment = async (commentData) => {
   try {
-    const response = await axios.post(`${BASE_URL}/comments`, commentData, {
+    const response = await axios.post(`${BASE_URL}/api/comments`, commentData, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -66,7 +66,7 @@ export const addComment = async (commentData) => {
 
 export const getCommentsByBlogId = async (blogId) => {
   try {
-    const response = await axios.get(`${BASE_URL}/comments/${blogId}`);
+    const response = await axios.get(`${BASE_URL}/api/comments/${blogId}`);
     return response.data;
   } catch (error) {
     console.error('Error fetching comments:', error);
@@ -78,11 +78,11 @@ export const updateProfile = async (userData) => {
   try {
     let response;
     if (userData instanceof FormData) {
-      response = await axios.put(`${BASE_URL}/profiles/update`, userData, {
+      response = await axios.put(`${BASE_URL}/api/profiles/update`, userData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
     } else {
-      response = await axios.put(`${BASE_URL}/profiles/update`, userData);
+      response = await axios.put(`${BASE_URL}/api/profiles/update`, userData);
     }
     return response.data;
   } catch (error) {
@@ -94,7 +94,7 @@ export const updateProfile = async (userData) => {
 // Upload profile picture
 export const uploadProfilePic = async (formData) => {
   try {
-    const response = await axios.post(`${BASE_URL}/profiles/upload-profile-pic`, formData, {
+    const response = await axios.post(`${BASE_URL}/api/profiles/upload-profile-pic`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -107,7 +107,7 @@ export const uploadProfilePic = async (formData) => {
 
 export const getCurrentUserProfile = async (userId) => {
   try {
-    const response = await axios.get(`${BASE_URL}/profiles/current-profile`, {
+    const response = await axios.get(`${BASE_URL}/api/profiles/current-profile`, {
       params: { userId }
     });
     return response.data;
@@ -119,7 +119,7 @@ export const getCurrentUserProfile = async (userId) => {
 
 export const checkUsernameAvailability = async (username) => {
   try {
-    const response = await axios.get(`/api/profiles/check-username`,{username:username});
+    const response = await axios.get(`${BASE_URL}/api/profiles/check-username`,{username:username});
     return response.data.available; // Assuming the response contains a boolean field 'available'
   } catch (error) {
     console.error('Error checking username availability:', error);
@@ -129,7 +129,7 @@ export const checkUsernameAvailability = async (username) => {
 
 export const getUserProfileByUsername = async (username) => {
   try {
-    const response = await axios.get(`${BASE_URL}/profiles/username/${username}`);
+    const response = await axios.get(`${BASE_URL}/api/profiles/username/${username}`);
     return response.data;
   } catch (error) {
     console.error('Error fetching user profile:', error);

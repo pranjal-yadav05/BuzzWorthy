@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './CreatePost.css'; // Import CSS file for styling
 import { jwtDecode } from 'jwt-decode';
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const CreatePost = () => {
   const [title, setTitle] = useState('');
@@ -24,7 +25,7 @@ const CreatePost = () => {
       const decodedToken = jwtDecode(token);
       const userId = decodedToken.userId; // Assuming the token has a 'userId' field
 
-      await axios.post('http://localhost:5000/api/blogs', { title, content, userId }, {
+      await axios.post(`${BASE_URL}/api/blogs`, { title, content, userId }, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
