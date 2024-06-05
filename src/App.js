@@ -21,7 +21,7 @@ function App() {
       <Router>
         <div className="App">
           {/* Passing searchQuery and handleSearchChange to the Header */}
-          <Header onSearchChange={handleSearchChange} searchQuery={searchQuery} />
+          <Header searchQuery={searchQuery} />
 
           <Routes>
             <Route exact path="/" element={<Home blogs={blogs} searchQuery={searchQuery} />} />
