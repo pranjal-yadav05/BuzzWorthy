@@ -1,7 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Header.css'
+
 function Header({ onSearchChange }) {
+  
+  const navigate = useNavigate();
+
+  const signOut = ()=>{
+    localStorage.removeItem('token');
+    navigate('/signin'); // Redirect to the signin page after signout
+  }
 
   return (
     <nav style={{backgroundColor:'#35185A',color:'white'}} className="navbar navbar-expand-lg">
@@ -30,7 +38,19 @@ function Header({ onSearchChange }) {
                 Home
               </Link>
             </li>
-            <li className="nav-item dropdown">
+            <li>
+              <Link style={{color:'white'}} className="nav-link active" aria-current="page" to="/my-profile">
+                Profile
+              </Link>
+            </li>
+            <li className="nav-item">
+              {localStorage.getItem('token') ? (
+                <i style={{color:'white'}}  onClick={signOut} className="nav-link">Sign Out</i>
+              ) : (
+                <Link style={{color:'white'}}  to="/signin" className="nav-link">Sign In</Link>
+              )}
+            </li>
+            {/* <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
                 href="#"
@@ -60,7 +80,7 @@ function Header({ onSearchChange }) {
                   </a>
                 </li>
               </ul>
-            </li>
+            </li> */}
           </ul>
           <div className="d-flex" role="search">
             <input

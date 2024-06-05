@@ -1,0 +1,101 @@
+.create-post-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); */
+    background-image: url('../public/milad.jpg');
+    background-size: cover;
+    padding: 20px;
+}
+
+.create-post-card {
+    display: flex;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+}
+
+.create-post-left {
+    flex: 1;
+    overflow: hidden;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.create-post-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.create-post-right {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.create-post-form {
+    width: 100%;
+}
+
+.create-post-form h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+    color: #333;
+}
+
+.create-post-form .error-message {
+    color: red;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.create-post-form input,
+.create-post-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.create-post-form textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.button-container {
+    text-align: center;
+}
+
+.submit-button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submit-button:hover {
+    background: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .create-post-container {
+        flex-direction: column;
+    }
+
+    .create-post-left {
+        display: none;
+    }
+}
