@@ -1,6 +1,4 @@
-# Buzzworthy
-
-<img src='./public/BuzzWorthy.gif' width='20%' >
+<img src='./public/logo-no-background.png' width='50%'>
 
 Welcome to **Buzzworthy**, a dynamic blogging platform designed to empower users to share their thoughts, ideas, and stories with the world. Buzzworthy combines a sleek user interface with powerful features to create a seamless blogging experience.
 
